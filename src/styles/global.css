@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+  background-color: #ffffff;
+}
+
+body.dark-mode {
+  background-color: #1a1d21 !important;
+  color: #ffffff;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  background: inherit;
+}
+
+/* Main content area background fix */
+.main-content {
+  min-height: 100vh;
+  padding-bottom: 2rem;
+}
+
+.dark-mode .main-content {
+  background-color: #1a1d21 !important;
+}
+
+/* Container background fix */
+.dark-mode .container-fluid {
+  background-color: #1a1d21 !important;
+}
+
+.dark-mode .row {
+  background-color: #1a1d21 !important;
+}
+
+/* Task list container background fix */
+.task-list-container {
+  min-height: calc(100vh - 200px);
+  background: inherit;
+}
+
+.dark-mode .task-list-container {
+  background-color: #1a1d21 !important;
+}
+
+.form-control:focus,
+.btn:focus,
+.form-select:focus {
+  box-shadow: none;
+  border-color: #0d6efd;
+}
+
+/* Improved dark mode styles */
+.dark-mode .card {
+  background-color: #242729 !important;
+  border-color: #2d2d2d !important;
+}
+
+.dark-mode .form-control,
+.dark-mode .form-select {
+  background-color: #2d2d2d !important;
+  border-color: #3d3d3d !important;
+  color: #ffffff !important;
+}
+
+.dark-mode .text-muted {
+  color: #a0a0a0 !important;
+}
+
+/* Empty state improvements */
+.empty-state {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent !important;
+}
+
+.dark-mode .empty-state i {
+  color: #3d3d3d;
+}
+
+.dark-mode .empty-state p {
+  color: #a0a0a0;
+}
+
+/* Ensure all wrappers maintain dark background */
+.dark-mode #root,
+.dark-mode .app-wrapper,
+.dark-mode .container-fluid,
+.dark-mode .row,
+.dark-mode .col-10,
+.dark-mode .task-list,
+.dark-mode .task-list-container {
+  background-color: #1a1d21 !important;
+}

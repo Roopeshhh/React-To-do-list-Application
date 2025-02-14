@@ -1,20 +1,23 @@
 import React from "react";
-import Aside from "./Aside/aside";
 import Header from "./NavBar/header";
+import Aside from "./Aside/aside";
 import Main from "./Main/main";
+import { AppProvider } from "./context/AppContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    <>
-      <Header />
-      <div className="container-fluid p-0">
-        <div className="row">
-          <Aside />
-          <Main />
+    <AppProvider>
+      <div className="app-wrapper">
+        <Header />
+        <div className="container-fluid p-0">
+          <div className="row">
+            <Aside />
+            <Main />
+          </div>
         </div>
       </div>
-    </>
+    </AppProvider>
   );
 }
 

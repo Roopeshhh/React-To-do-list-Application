@@ -1,65 +1,58 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../context/AppContext";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const Aside = () => {
+  const { darkMode, activeCategory, setActiveCategory } =
+    useContext(AppContext);
+
+  const categories = [
+    { id: "all", name: "All Tasks", icon: "bi-list-ul" },
+    { id: "social", name: "Social", icon: "bi-people" },
+    { id: "shopping", name: "Shopping", icon: "bi-cart" },
+    { id: "savings", name: "Savings", icon: "bi-piggy-bank" },
+    { id: "workouts", name: "Workouts", icon: "bi-bicycle" },
+  ];
+
   return (
-    <>
-      <div className="col-2 bg-light vh-100 position-fixed top-0 pt-5 mt-5">
-        <div className="dropdown mt-3">
+    <div
+      className={`col-2 vh-100 position-fixed top-0 pt-5 mt-5 d-flex flex-column 
+      ${darkMode ? "bg-dark" : "bg-light"}`}>
+      <div className="mt-4 flex-grow-1">
+        {categories.map((category) => (
           <button
-            className="btn btn-secondary dropdown-toggle mx-5 px-4"
-            type="button"
-            id="categoryDropdown"
-            data-bs-toggle="collapse"
-            data-bs-target="#categoryMenu"
-            aria-expanded="false">
-            <i className="bi bi-list-ul me-2"></i>
-            Category
+            key={category.id}
+            className={`btn w-100 text-start mb-2 ${
+              activeCategory === category.id
+                ? "btn-primary"
+                : darkMode
+                ? "btn-outline-light"
+                : "btn-outline-dark"
+            }`}
+            onClick={() => setActiveCategory(category.id)}>
+            <i className={`bi ${category.icon} me-2`}></i>
+            {category.name}
           </button>
-
-          <div className="collapse" id="categoryMenu">
-            <ul className="list-unstyled mt-2 mx-5 px-4 py-1">
-              <li>
-                <a className="dropdown-item py-1" href="#">
-                  Social
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item py-1" href="#">
-                  Shopping
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item py-1" href="#">
-                  savings
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item py-1" href="#">
-                  workouts
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="other-buttons">
-          <button
-            className="btn btn-secondary mx-5 px-4 mt-5 me-5"
-            type="button">
-            <i className="bi bi-question-circle me-2"></i>
-            Help
-          </button>
-          <button
-            className="btn btn-secondary mx-5 px-4 mt-5 me-5"
-            type="button">
-            <i className="bi bi-gear me-2"></i>
-            Settings
-          </button>
-        </div>
+        ))}
       </div>
-    </>
+
+      <div className="bottom-buttons mb-4 px-3">
+        <button
+          className={`btn w-100 mb-2 ${
+            darkMode ? "btn-outline-light" : "btn-outline-dark"
+          }`}>
+          <i className="bi bi-question-circle me-2"></i>
+          Help
+        </button>
+        <button
+          className={`btn w-100 ${
+            darkMode ? "btn-outline-light" : "btn-outline-dark"
+          }`}>
+          <i className="bi bi-gear me-2"></i>
+          Settings
+        </button>
+      </div>
+    </div>
   );
 };
 
